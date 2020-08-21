@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="MySQL - hrdb2@localhost" uuid="eba74265-e2d7-4c35-b9c8-92f263986c6e">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/hrdb2</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="db_zzwy@localhost" uuid="06dde1d3-735d-4890-963c-186ebcc68d92">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/db_zzwy</jdbc-url>
+    </data-source>
+  </component>
+</project>

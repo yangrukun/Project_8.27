@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS代码捕捉回车键</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.onload = function(){
+				//回车键的键值是13
+				//ESC键的键值是27			
+				/*
+				//下面这个测试是为了证明onkeydown事件发生后浏览器会给我们传回一个值。
+				document.getElementById("username").onkeydown = function(a){
+					//获取键值
+					//onkeydown事件发生之后浏览器才传回一个值。
+					alert(a);//[object KeyboardEvent] 接受浏览器传回来的值。
+				}
+				 */
+				document.getElementById("username").onkeydown = function(event){
+					//获取键值
+					/* alert(event.keyCode);//按哪个键就返回哪一个键的键值。 */
+					
+						if(event.keyCode  == 13){
+							alert("正在登陆....")
+						}
+					
+				}
+				
+			}
+			
+		</script>
+		
+		<input type="text" id="username" />
+		
+	</body>
+</html>

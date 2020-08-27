@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>关于正则表达式</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			   1、什么是正则表达式，有什么用？
+			        正则表达式：Regular Expression
+					正则表达式主要用在字符串格式匹配方面。
+			  
+			   2、正则表达式实际上是一门独立的学科，子啊java语言中支持，C语言也支持，JavaScript中 也支持。
+			   大部分编程语言都支持正则表达式。正则表达式最初用在医学方面，用来表示神经符号等。目前使用最多
+			   的是计算机编程领域，用作字符串格式匹配。包括搜索方面等。
+			   
+			   3、正则表达式，对于我们javaScript编程来说，掌握哪些内容呢？
+			          第一：常见的正则表达式符号要认识。
+					  第二：简单的正则表达式要会写
+					  第三：他人编写的正则表达式要能看懂。
+					  第四：在JavaScript当中，怎么创建正则表达式对象! (new对象)
+					  第五：在JavaScript当中，正则表达式对象有哪些方法！(调方法)
+					  第六：能够快速的从网络上找到自己需要的正则表达式。并且测试其有效性。
+			  
+			   4、常见的正则表达式符号？
+			   
+			   记得加两个斜杠//包起来
+			   /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+			   var regExp = /正则表达式/flags;  记得加两个斜杠//包 起来
+			   
+			    //想全部替换需要用到正则表达式。
+			   alert("name=value&name=value&name=value".replace(/.&/g,"%"));//name=value%name=value%name=value
+
+
+			       . 匹配除换行符以外的任意字符 
+			       \w 匹配字母或数字或下划线或汉字 
+			       \s 匹配任意的空白符 
+			       \d 匹配数字 
+			       \b 匹配单词的开始或结束 
+			       ^ 匹配字符串的开始  
+			       $ 匹配字符串的结束
+				   
+				   \W 匹配任意不是字母，数字，下划线，汉字的字符
+				   \S 匹配任意不是空白符的字符 
+				   \D 匹配任意非数字的字符 
+				   \B 匹配不是单词开头或结束的位置 
+				   [^x] 匹配除了x以外的任意字符 
+				   [^aeiou] 匹配除了aeiou这几个字母以外的任意字符 
+				   
+				   * 重复零次或更多次 
+				   + 重复一次或更多次 
+				   ? 重复零次或一次 
+				   {n} 重复n次 
+				   {n,} 重复n次或更多次 
+				   {n,m} 重复n到m次 
+				   
+				   正则表达式当中的小括号()优先级较高。
+				   [1-9] 表示1到9的任意一个数字（次数默认是1次。）
+				   [A-Za-z0-9] 表示A-Z、a-z、0-9中的任意1个字符。
+				   [A-Za-z0-9-] 表示A-Z、a-z、0-9、- ，以上所有字符中的任意1个字符。  
+				   
+				   | 表示或者
+				   
+				   使用正则表达式
+				   				str为要去除空格的字符串:
+				   				
+								////下面是去除全部空格，在正则表达式//后面加一个g：全局匹配。
+				   				去除所有空格:
+				   				str = str.replace(/\s+/g,"")
+				   				
+				   				去除两头空格:
+				   				str = str.replace(/^\s+|\s+$/g,"")
+				   				
+				   				去除左空格：
+				   				str=str.replace( /^\s/, '')
+				   				
+				   				去除右空格：
+				   				str=str.replace(/(\s$)/g, "")
+			   
+			   5、简单的正则表达式要会写
+			       QQ号的正则表达式：^[1-9][0-9]{4,}$
+			   
+			   6、他人编写的正则表达式要能看懂？
+			       Email地址：^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+				       zhangsan+a@126.com.cn
+			   
+			   7、怎么创建正则表达式对象，怎么调用正则表达式对象的方法？
+			       第一种创建方式： 
+				                   /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+				      var regExp = /正则表达式/flags;  记得加两个斜杠//包 起来
+				   第二种创建方式： 使用内置支持类RegExp
+				      var regExp = new RegExp("正则表达式","flags");
+					  
+				   关于flags：
+				         g: 全局匹配
+						 i：忽略大小写
+						 m：多行搜索（ES规范制定之后才支持m。）当前面试正则表达式 的时候，m不能用。只有前面是普通字符串的时候，m才能用。
+					
+					正则表达式对象的test()方法？
+						 true / false = 正则表达式.test(用户填写的字符串); // var ok = emailRegExp.text(email);
+						 true: 字符串格式匹配成功
+						 false: 字符串格式匹配失败
+						 
+						 //获取用户填写的邮箱信息 。
+						 var email = document.getElementById("email").value;
+						 //创建邮箱格式的正则表达式对象
+						 var emailRegExp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+						 //校验 用户填写的邮箱是否符合邮箱正则表达式
+						 var ok = emailRegExp.test(email);
+
+			*/
+		   window.onload = function(){
+			   //给按钮绑定click事件。
+			   document.getElementById("btn").onclick = function(){
+				    //获取用户填写的邮箱信息 
+				  var email = document.getElementById("email").value;
+				   //创建邮箱格式的正则表达式对象
+				  var emailRegExp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+				   //校验 用户填写的邮箱是否符合邮箱正则表达式
+				  var ok = emailRegExp.test(email);
+				  if(!ok){
+					  //不合法
+					  document.getElementById("emailError").innerText = "邮箱地址不合法";
+				  }else{
+					  //合法 
+					   document.getElementById("emailError").innerText = "邮箱地址合法";
+				  }
+				  
+				  //给id=email的文本框绑定focus获得焦点事件。
+				  document.getElementById("email").onfocus = function(){
+					  //把右边的警告 信息去掉，当光标回到文本框时。
+					  document.getElementById("emailError").innerText = "";
+				  }
+			   }
+		   }
+			
+		</script>
+		
+		<input type="text" id="email" />
+		<!-- //来一个警告块span告诉用户是否填写的邮箱合法与不合法，内容由JS代码填写 -->
+		<span id="emailError" style="color: #FF0000;font-size: 12px;"></span>
+		<br />
+		<input type="button" value="验证邮箱" id="btn" />
+	</body>
+</html>

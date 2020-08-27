@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>关于JS代码的执行顺序</title>
+		
+	</head>
+	
+	<!--load事件什么时候发生？页面全部元素加载完毕才会发生。-->
+	<body onload="ready()">
+		<!--利用onload事件句柄属性，这样就可以避免空元素null了-->
+		
+	    <script type="text/javascript">
+			
+/* 			document.getElementById("btn").onclick = function(){
+				alert("hello");TypeError: //报错：document.getElementById(...) is null
+		    //代码加载到此处的时候，id="btn"的元素还没加载到内存。
+			}
+			 */
+			function ready(){
+			 
+			 document.getElementById("btn").onclick = function(){
+			   alert("hello.....");
+			   }
+			
+			}
+			
+			
+		</script>
+		<input type="button" value="hello" id="btn" /> 
+
+		
+	</body>
+</html>

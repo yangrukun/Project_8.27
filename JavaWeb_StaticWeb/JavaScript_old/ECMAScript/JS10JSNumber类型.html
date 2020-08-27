@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Number类型</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			   1、Number类型包括哪些值？  Number类型下不一定都是数字
+			      1、4、3.14、12、  -13....  NaN 、  Infinity
+				  整数，小数 ，正数，负数，不是数字  无穷大   这些都属于Number类型。
+			   2、isNaN()：结果是true表示不是一个数字，结果是false表示是一个数字。
+			   
+			   3、parseInt()函数 :可以将 字符串 自动转换成数字，并且取整数位。
+			   
+			   4、parseFloat()函数  ：可以将 字符串 自动转换成数字。
+			   
+			   5、Math.ceil()函数（Math是数学类，数学类当中有一个函数叫做ceil()，
+			   作用是：向上取整。2.0001 向上取整：3）
+			   （ceil：天花板）
+			   
+			*/
+		   var i = 1;
+		   var i2 = 3.14;
+		   var i3 = NaN;
+		   var i4 = Infinity;
+		   
+		   //"number"
+		   alert(typeof i);
+		   alert(typeof i2);
+		   alert(typeof i3);
+		   alert(typeof i4);
+		   
+		   //关于NaN（表示Not a Number，不是一个数字，但属于Number类型）
+		   //什么情况下结果是一个NaN呢？
+		   //运算结果本来应该是一个数字的，最后算完不是一个数字的时候，结果是NaN。
+		   var a = 10;
+		   var b = "你好";
+		   alert(a/b);//除号显然最后结果应该是一个数字，但是最后运算的过程导致最后不是一个数字，那么最后的结果是NaN。
+		   
+		   var e = "abc";
+		   var f = 12;
+		   alert(e + f);//"abc12" 结果不是NaN，
+			// 因为 + 号的两边 有一边是字符串，+ 就会变成连接符，不再是加号。
+		   
+		   //Infinity （当除数为0的时候，结果为无穷大）
+		   alert(12/0);//Infinity  无穷大
+		   
+		   //思考：在JS中10/3的结果，在JS中/不是整除意思，
+			// java中 运算时是int类型才导致了整除含义，在JS中数据类型可以随意。
+
+		   alert(10/3);//3.3333333333333335
+		   
+		   //关于isNaN函数？
+		   //用法：isNaN(数据),结果是true表示不是一个数字，结果是false表示是一个数字。
+		   //isNaN：is Not a Number 不是一个数字，当为true时，就真的不是一个数字。
+		   function sum(a,b){
+			   if (isNaN(a)||isNaN(b)) {
+			   	    alert("参与运算的必须是数字");
+					return;
+			   } 
+			  return a + b;    
+		   }
+		   //sum(2,a); 调不了函数，a是字符串必须用双引号或者单引号括起来。
+		   sum(2,"abc");
+		   
+		   //parseInt():可以将字符串自动转换成数字，并且取整数位。
+		   alert(parseInt("3.2345"));//3
+		   alert(parseInt(3.2345));//3
+		   
+		   //parseFloat()：可以将字符串自动转换成数字。
+		   alert(parseFloat("3.2") +2);//5.2
+		   alert(parseFloat("3"));//3
+		   
+		   //Math.ceil()
+		   alert(Math.ceil("2.005"));//3
+		   
+		</script>
+	</body>
+</html>

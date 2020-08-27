@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>js的局部变量和全局变量</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			   （1）局部变量：
+			        1、函数的形参时局部变量
+					2、另外使用var关键字在函数体中声明的变量是局部变量
+					   函数执行结束之后，局部变量的内存就释放了。
+					
+			   （2）全局变量：
+			        1、在函数体外声明的变量属于全局变量
+					2、另外不使用var关键字声明的变量无论位置在哪，它都是全局变量
+					   全局变量在浏览器关闭时销毁。
+					
+					由于全局变量在打开浏览器时声明，浏览器关闭时销毁。全局变量会一直
+					在浏览器内存中，耗费内存空间。
+					所以能使用局部变量尽量使用局部变量。
+					
+			    这里没有用var声明的变量。可以删除。是全局对象window的一个属性。
+			    当不用var声明一个JavaScript全局变量时，实际上是定义了全局对象的一个属性。
+			    在客户端的JavaScript中，在浏览器窗口中的所有JavaScript代码中，
+			    Window对象充当了全局对象。
+			    
+			    当使用var声明一个变量时，创建的这个属性是不可配置的，
+			    也就是说这个变量无法通过delete运算符删除。
+					
+			*/
+		   //全局变量
+		   
+		   var i = 100;
+		   
+		   function acce(){
+			   //访问的是全局变量
+			   alert("i = "+i);
+		   }
+		   acce();
+		   
+		   //全局变量
+		   var username ="jack";
+		   function sr(){
+			   //局部变量
+			   var username = "lisi";
+			   //就近原则：访问的是局部变量
+			   alert(username);//lisi
+		   }
+		   sr();
+		   
+		   //访问的是全局变量
+		   alert(username);
+		   
+		</script>
+	</body>
+</html>

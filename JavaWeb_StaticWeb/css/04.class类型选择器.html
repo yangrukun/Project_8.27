@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>class类型选择器</title>
+	<link rel="stylesheet" type="text/css" href="1.css"/>
+</head>
+<body>
+ <!--      id选择器: 值是唯一的,也就是说不能达到复用,只能在一个标签上使用。
+
+	   class选择器:值不是唯一的,可以达到复用,可以在多个标签上进行使用,
+	               这就很强大了,写一个 style,然后可以在很多标签上进行使用,
+	               这也就是很多框架为什么选择使用 类选择器了。-->
+	<!-- 
+		需求1：修改 class 属性值为 class01的 span 或 div 标签，字体颜色为蓝色，字体大小30个像素。边框为1像素黄色实线。
+		需求2：修改 class 属性值为 class02的 div 标签，字体颜色为灰色，字体大小26个像素。边框为1像素红色实线。
+	 -->
+
+	<div class="class01">div标签class01</div>
+	<div class="class02">div标签</div>
+	<span class="class01">span标签class01</span>
+	<span>span标签2</span>
+
+</body>
+</html>
+

@@ -1,0 +1,19 @@
+		   function sum(a,b){
+			   if (isNaN(a)||isNaN(b)) {
+			   	    alert("参与运算的必须是数字");
+					return;
+			   } 
+			  return a + b;    
+		   }
+		   //sum(2,a); 调不了函数，a是字符串必须用双引号或者单引号括起来。
+		   sum(2,"abc");
+		   
+		  var a = "adsfafa";
+		   var b = "张三";
+		   
+		   sum("as",3);
+		   
+		  注意：在JS中不是数字和变量的字母必须用双引号或者单引号括起来。 
+		   
+		   
+		   

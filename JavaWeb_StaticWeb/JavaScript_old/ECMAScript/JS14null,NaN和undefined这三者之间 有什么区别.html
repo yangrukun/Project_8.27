@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>null,NaN和undefined这三者有什么区别</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			  这是考点：
+			  
+			*/   
+		   //null,NaN,undefined 数据类型不一样。
+		   alert(typeof null);//"objet" 这是JS设计时遗留的问题，null的数据类型是Null但是typeof结果是object。
+		   alert(typeof NaN);//"number"
+		   alert(typeof undefined);//"undefined"
+		   
+		   //注意：null和undefined值可以等同。但是数据类型不等同。====全等运算符就知道。
+		   alert(null == NaN); // false
+		   alert(null == undefined); // true
+		   alert(undefined == NaN); // false
+		   
+		   //在JS当中有两个比较特殊的运算符
+		   //==（等同运算符：只判断值是否相等）
+		   //===（全等运算符：既判断值是否相等，又判断数据类型是否相等）
+		   alert(null === NaN); // false
+		   alert(null === undefined); // false
+		   alert(undefined === NaN); // false
+		   
+		   //1可以等同于==true，但是不能全等 ===，1是number数据类型，true是boolean类型。
+		   alert(1 == true);//true
+		   alert(1 === true);//false
+		   
+		   
+		</script>
+	</body>
+</html>

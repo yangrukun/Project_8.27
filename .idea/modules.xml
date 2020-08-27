@@ -3,10 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaWeb/JavaWeb.iml" filepath="$PROJECT_DIR$/JavaWeb/JavaWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaWeb_StaticWeb/JavaWeb_StaticWeb.iml" filepath="$PROJECT_DIR$/JavaWeb_StaticWeb/JavaWeb_StaticWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Maven01/Maven01.iml" filepath="$PROJECT_DIR$/Maven01/Maven01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Maven02/Maven02.iml" filepath="$PROJECT_DIR$/Maven02/Maven02.iml" />
       <module fileurl="file://$PROJECT_DIR$/Module01/Module01.iml" filepath="$PROJECT_DIR$/Module01/Module01.iml" />
       <module fileurl="file://$PROJECT_DIR$/Module02/Module02.iml" filepath="$PROJECT_DIR$/Module02/Module02.iml" />
       <module fileurl="file://$PROJECT_DIR$/Project01.iml" filepath="$PROJECT_DIR$/Project01.iml" />
-      <module fileurl="file://$PROJECT_DIR$/StaticWeb/StaticWeb.iml" filepath="$PROJECT_DIR$/StaticWeb/StaticWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mavenproject/mavenproject.iml" filepath="$PROJECT_DIR$/mavenproject/mavenproject.iml" />
     </modules>
   </component>
 </project>

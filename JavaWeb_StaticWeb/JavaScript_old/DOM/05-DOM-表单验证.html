@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表单验证</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+			（1）用户名不能为空
+			（2）用户名必须在6-14位之间
+			（3）用户名只能有数字和字母组成，不能含有其它符号（正则表达式）
+			（4）密码和确认密码一致，邮箱地址是否合法。
+			（5）统一失去焦点验证
+			（6）错误提示信息统一在span标签中提示，并且要求字体12号，红色。
+			（7）文本框再次获得焦点后，清空错误提示信息，如果文本框中数据不合法要求清空文本框的value
+			（8）最终表单中所有项均合法方可提交 */
+
+			window.onload = function() {
+
+				//获取用户名
+				var username = document.getElementById("username");
+
+				var usernameSpan = document.getElementById("usernameError");
+				//绑定blur事件
+				username.onblur = function() {
+					//获取用户名的输入信息
+					var usernamevalue = username.value;
+					//去除用户名前后空白  (这个一定要记得加上。经验！)
+					usernamevalue = usernamevalue.trim();
+
+					if (usernamevalue == "") {
+						usernameSpan.innerText = "用户名不能为空";
+					} else {
+						if (usernamevalue.length < 6 || usernamevalue.length > 14) {
+							usernameSpan.innerText = "用户名必须在6-14位之间";
+						} else {
+
+							//判断 用户名只能有数字和字母组成，不能含有其它符号（正则表达式）
+							var usernameRegExp = /^[A-Za-z0-9]+$/;
+							var ok = usernameRegExp.test(usernamevalue);
+							if (!ok) {
+								usernameSpan.innerText = "用户名只能有数字和字母组成，不能含有其它符号";
+							}
+						}
+
+					}
+				}
+				//给用户名绑定获得焦点事件，，为了去除span的提醒信息。
+				document.getElementById("username").onfocus = function() {
+
+					if (usernameSpan.innerText != "") {
+						username.value = "";
+					}
+					usernameSpan.innerText = "";
+				}
+
+
+				//获取确认密码对象
+				var userpwd2 = document.getElementById("userpwd2");
+				//获取确认密码的span对象
+				var userpwdSpan = document.getElementById("userpwd2Error");
+				//同样的给绑定blur事件
+				userpwd2.onblur = function() {
+					var userpwd = document.getElementById("userpwd").value;
+					var userpwd2value = userpwd2.value;
+					if (userpwd != userpwd2value) {
+
+						userpwdSpan.innerText = "两次输入的密码不一致";
+					}
+
+				}
+				//给就确认密码绑定获得焦点focus事件，，为了去除span的提醒信息。
+				document.getElementById("userpwd2").onfocus = function() {
+					if (userpwdSpan.innerText != "") {
+						userpwd2.value = "";
+					}
+					userpwdSpan.innerText = "";
+				}
+
+				//获取邮箱对象。
+				var email = document.getElementById("email");
+
+				var emailSpan = document.getElementById("emailError");
+				//绑定blur事件
+				email.onblur = function() {
+					var emailRegExp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+					var emailvalue = email.value;
+					//验证邮箱是否合法。
+					var ok = emailRegExp.test(emailvalue);
+					if (!ok) {
+						emailSpan.innerText = "你输入的邮箱不合法！";
+					}
+				}
+				//绑定focus事件
+				email.onfocus = function() {
+					if (emailSpan.innerText != "") {
+						email.value = "";
+					}
+					emailSpan.innerText = "";
+				}
+				
+				
+				//最终表单中所有项均合法方可提交
+				//获取提交按钮对象
+				var submitBtn = document.getElementById("submitBtn");
+				//给提交按钮绑定提交事件。
+				    submitBtn.onclick = function() {
+				    //触发username的blur，userpwd的blur，email的blur事件。
+					//不需要手动触发，直接使用纯JS代码触发。
+					//username.blur();这样触发，不能写成onblur这是属性，blur()这是函数/方法
+					//blur() 函数触发 blur 事件。
+					
+					username.focus();//先获得焦点事件
+					username.blur();
+					
+					userpwd.focus();
+					userpwd.blur();
+					
+					email.focus();
+					email.blur();
+					
+					if (usernameSpan.innerText == "" && userpwdSpan.innerText=="" && emailSpan.innerText=="") {
+						//当所有表单中所有项均合法方可提交 
+						
+						//获取form表单对象
+						var userForm = document.getElementById("userForm");
+						/* Form 对象方法
+							方法	描述
+							reset()	把表单的所有输入元素重置为它们的默认值。
+							submit()	提交表单。 
+							*/
+						   
+						//可以把form表单提交的属性action搬来这里
+						userForm.action="http://localhost:8080/jd/save"
+						//提交表单，用到表单的方法submit()方法提交。
+						userForm.submit();
+					}
+				}
+				
+			}
+
+
+		</script>
+
+		<form  method="post" id="userForm">
+
+			<table>
+				<tr>
+					<td>用户名</td>
+					<td><input type="text" name="username" id="username" /><span id="usernameError" style="color: red;font-size: 12px;"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>密码</td>
+					<td><input type="password" name="userpwd" id="userpwd" /></td>
+				</tr>
+				<tr>
+					<td>确认密码</td>
+					<td><input type="password" name="userpwd2" id="userpwd2" /><span id="userpwd2Error" style="color: red;font-size: 12px;"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>邮箱</td>
+					<td><input type="text" name="email" id="email" /><span id="emailError" style="color: red;font-size: 12px;"></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="center"><input type="button" value="注册" id="submitBtn" /></td>
+					<td align="center"><input type="reset" value="重置" /></td>
+				</tr>
+
+				<!-- 		
+        用户名<input type="text" name="username" id="username" /><br />
+		密码<input type="text" name="userpwd" id="userpwd"/><br />		
+		确认密码<input type="text" name="userpwd2" id="userpwd2" /><br />
+		邮箱<input type="text" name="email" id="email" /><br />
+		<input type="submit" value="注册"  />
+		<input type="reset" value="重置" />
+		 -->
+
+			</table>
+		</form>
+	</body>
+</html>

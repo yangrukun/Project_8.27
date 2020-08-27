@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>js中的控制语句</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		    /*
+			  1、if
+			  2、switch
+			  
+			  3、while
+			  4、do...while...
+			  5、for循环
+			  
+			  6、break
+			  7、continue
+			  
+			  8、for...in语句（了解）
+			  9、with语句（了解）
+			*/
+		   
+		   //创建JS数组     java右边时大括号，JS是[]中括号。还能自动扩容。
+		   var arr = [false,true,1,2,"abc",3.14]; // JS中数组元素的类型随意。元素的个数随意。
+		   //遍历数组     (JS中length是属性。)
+		   for(var i = 0; i< arr.length; i++ ){
+			   alert(arr[i]);//访问数组还是要用arr[]中括号。
+		   }
+		   
+		   //for...in    遍历数组
+		   for (var i in arr) {
+			 /*  alert(i);//0，1，2，3，4，5  i代表arr数组的下标。 */
+			 alert(arr[i]);
+		   	
+		   }
+		   
+		   //for...in语句可以遍历对象的属性
+		   User = function(username,password){
+			   this.username = username;
+			   this.password = password;
+		   }
+		   var u = new User("张三","123");
+		   
+		   alert(u.username + "，" +u.password);
+		   alert(u["username"] + "," + u["password"]);
+		   
+		   //for...in语句可以遍历对象的属性
+		   for(var shuXingMing in u){
+			//   alert(shuXingMing);//username , password
+			//   alert(typeof shuXingMing );//string。 说明 shuXingMing 本身是一个字符串类型。
+			alert(u[shuXingMing]);//[""]中括号里面的双引号不用写，因为上面测出shuXingMing 本身是一个字符串类型。
+			//张三  ，  123	
+		   }
+		   
+		   //with  作用：把变量名先提取出来，下面alert(username + "," + password);会自动添加上u.
+		   with(u){
+			   alert(username + "," + password);
+		   }
+		   
+		   
+		</script>
+		
+	</body>
+</html>
+<!--
+   java中数组array的创建：
+     public class Test{
+		 public static void main(String[] args){
+			 int[] arr = {1,2,3,4,5,6};
+			 int[] arr2 = new  int[5]; // 等同于：int[] arr2 = {0,0,0,0,0};
+			 
+			 String[] arr3 = {"a","b","c"};
+			 String[] arr4 = new String[3]; // 等同于：String arr4 = {null,null,null};		  
+		}
+	 }
+   public class TestArray {
+      public static void main(String[] args) {
+         // 数组大小
+         int size = 10;
+         // 定义数组
+         double[] myList = new double[size];
+		 //数组下标是从0开始的。
+         myList[0] = 5.6;
+         myList[1] = 4.5;
+         myList[2] = 3.3;
+         myList[3] = 13.2;
+         myList[4] = 4.0;
+         myList[5] = 34.33;
+         myList[6] = 34.0;
+         myList[7] = 45.45;
+         myList[8] = 99.993;
+         myList[9] = 11123;
+         // 计算所有元素的总和
+         double total = 0;
+         for (int i = 0; i < size; i++) {
+            total += myList[i];
+         }
+         System.out.println("总和为： " + total);
+      }
+	  //遍历数组。
+	  for (int i = 0; i < array.length; i++) {
+	      System.out.print(array[i] + " ");
+	    }
+   }
+   
+   For-Each 循环：
+   
+   JDK 1.5 引进了一种新的循环类型，被称为 For-Each 循环或者加强型循环，它能在不使用下标的情况下遍历数组。
+   语法格式如下：
+   for(type element: array)
+   {
+       System.out.println(element);
+   }
+   实例
+   该实例用来显示数组 myList 中的所有元素：
+   TestArray.java 文件代码：
+   public class TestArray {
+      public static void main(String[] args) {
+         double[] myList = {1.9, 2.9, 3.4, 3.5};
+    
+         // 打印所有数组元素
+         for (double element: myList) {
+            System.out.println(element);
+         }
+      }
+   }
+   以上实例编译运行结果如下：
+   1.9
+   2.9
+   3.4
+   3.5
+-->

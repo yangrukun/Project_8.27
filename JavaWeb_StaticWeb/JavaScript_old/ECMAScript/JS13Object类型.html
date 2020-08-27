@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Object类型</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			   Object类型：
+			   1、Object类型是所有类型的超类，自定义的任何类型，默认继承Object。
+			   
+			   2、Object类包括哪些属性？
+			        prototype属性（常用,主要是这个）；作用是给类动态的扩展(添加)新的属性和新的函数。
+					
+					类名.prototype.新的属性/新的方法。
+					//可以通过prototype这个属性来给类Product动态添加一个属性pcost。
+					Product.prototype.pcost = 50;
+					//可以通过prototype这个属性来给类Product添加一个函数getPname。
+					Product.prototype.getPname = function(){
+						return this.pname;
+					}
+					
+			给String扩展一个函数。prototype就是这么为所欲为。！！！很重要prototype。
+			String.prototype.suiyi = function(){
+				alert("这是给String类型扩展的一个函数，叫做suiyi");
+			}
+			"abd".suiyi();//任意一个字符串都可以调用上面这个函数，这个函数属于String类型的。
+					
+					constructor属性
+			   
+			   3、Object类包括哪些函数？
+			        toString()
+					valueOf()
+					toLocaleString()
+			   
+			   4、在JS当中定义的类默认继承Object，会继承Object类中所有的属性以及函数。
+			   换句话说，自己定义的类 也有prototype属性。
+			   
+			   5、在JS当中怎么定义类？怎么new对象？
+			         定义类的语法：(格式和定义函数一样，但是看你怎么用就是什么类型。)
+					    第一种方式：
+						  function 类名(形参){
+							
+							}
+						第二种方式：
+						  类名 = function(形参){
+							  
+						  }
+					 
+					 创建对象的语法：
+					     new 构造方法名(实参)；//构造方法名和类名一致。(实参)记住
+			        等同于==> new 类名(实参)；
+
+					 var u1 = new User(); 
+					 u1.sno = 123;
+					 u1.sname = "lisi";
+					 u1.sage = 12; 
+					 这种方式也可以运行，但是lisi记得加上"lisi"双引号括起来。
+								 
+					
+			      JS中类的定义，同时也是一个构造函数的定义。
+			      在JS中类的定义和构造函数是放在一起来完成的。
+				  因为
+				      new 后面是跟构造函数来创建对象的。
+			
+			 */
+			function sayHello(){
+				
+			}
+			//把sayHello当作一个普通函数来调用。
+			sayHello();
+			
+			//把sayHello当作一个类，来创建对象。
+			var obj = new sayHello(); // obj是一个引用，保存内存地址指向堆中的对象。
+			
+			//a=定义一个学生类
+			function Student(){
+				alert("student.....")
+			}
+			//当作普通函数调用
+			Student();
+			
+			//当作类来创建对象
+			var stu = new Student();
+			alert(stu); //[object Object]
+		
+			//JS中类的定义，同时也是一个构造函数的定义。
+			//在JS中类的定义和构造函数是放在一起来完成的。
+			function User(a,b,c){//a,b,c是形参，属于局部变量。
+			//声明属性（this表示当前对象）
+			//User类中有3个属性：sno/sname/sage
+				this.sno = a;
+				this.sname = b;
+				this.sage = c;
+			}
+			//创建对象
+			var u1 = new User(111,"zhangsan",30);
+           /* 	
+            var u1 = new User();
+		    u1.sno = 123;
+			u1.sname = "lisi";
+			u1.sage = 12;
+			 这种方式也可以运行，但是lisi记得加上"lisi"双引号括起来。
+			 */
+			//访问对象属性
+			 alert(u1.sno);
+			 alert(u1.sname);
+			 alert(u1.sage);
+			
+		    //访问一个对象属性还可以使用这种语法。
+			 alert(u1["sno"]);
+			 alert(u1["sname"]);
+			 alert(u1["sage"]);
+			 
+			//再定义一个商品类。
+			Product = function(pno,pname,price){
+				//属性
+				this.pno = pno;
+				this.pname = pname;
+				this.price = price;
+				//定义函数
+				this.getPrice = function(){
+					return this.price;
+				}
+			}
+			
+			var pro = new Product(11,"西瓜", 100) ;
+			var pri = pro.getPrice();
+			alert(pri);//100
+			
+			//可以通过prototype这个属性来给类动态扩展属性以及函数。
+			Product.prototype.getPname = function(){
+				return this.pname;
+			}
+			//可以通过prototype这个属性来给类Product动态添加一个属性pcost。
+			Product.prototype.pcost = 50;
+			//调用后期扩展的pcost属性。
+			alert(pro.pcost);
+			
+			//调用后期扩展的getPname方法。 
+			alert(pro.getPname());//西瓜
+			
+			//给String扩展一个函数。prototype就是这么为所欲为。！！！很重要prototype。
+			String.prototype.suiyi = function(){
+				alert("这是给String类型扩展的一个函数，叫做suiyi");
+			}
+			"abd".suiyi();//任意一个字符串都可以调用上面这个函数，这个函数属于String类型的。
+	
+			
+		</script>
+	</body>
+</html>
+<!-- 
+    java中怎么定义类，怎么创建对象？(强类型)
+	 public class User{
+		 private String username;
+		 private String password;
+		 public User(){
+			 
+		 }
+		 public User(String username,String password){
+			 this.username = username;
+			 this.password = password;
+		 }
+	 }
+	   //上面有两种构造方法（有参和无参），可以创建2种不同的对象。
+		 User user = new User();
+		 User user2 = new User("zhangsan","123");
+    
+	JS语言怎么定义类，怎么创建对象？(弱类型)
+	   User = function(username,password){
+		   this.username = username;
+		   this.password = password;
+	   }
+	   //可以创建三个不同类型的对象。
+	   var u1 = new User();
+	   var u2 = new User("zhangsan");
+	   var u3 = new User("zhangsan","123");
+
+-->
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+<script type="text/javascript">
+    function  sum(a,b){
+        a = 12;
+        b = 23;
+        alert(a+b);//页面没有任何显示。
+        //之前说过 <script>标签里面的内容，会在页面加载时执行。
+        //但是方法不行，方法必须调用才能执行。
+        //函数必须调用才能执行的。
+    }
+    sum();//这才调用了函数sum显示35
+    sum(12,10);//显示35，因为，虽然你传初始化值 a=12，b=10进去，
+               // 但是执行下面时，a和b被重新赋值了， a = 12;b = 23;
+
+    sayHello = function(username){
+        alert("hello" + username);
+    }
+
+    //zhangsan是个 字符串不是变量名，必须用单引号或者双引号括起来。
+    /* sayHello(zhangsan);//ReferenceError: zhangsan is not defined */
+
+    sayHello("zhangsan");
+
+
+</script>
+
+<!--在按钮上，直接调用sayHello()函数 和 调用sum()函数-->
+<input type="button" value="hello"  onclick="sayHello('lisi')" />
+<!--onclick是以属性，属性/属性值存在，onclick=""可以带双引号或者不带双引号onclick=，-->
+<input type="button" value="20+30的计算结果"  onclick=sum(20,30) />
+<input type="button" value="hi" onclick="sayHello('wawu')" />
+
+</body>
+</html>

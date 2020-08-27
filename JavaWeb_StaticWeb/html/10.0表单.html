@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单的显示</title>
+</head>
+<body>
+
+<!--
+    需求 1:创建一个个人信息注册的表单界面。包含用户名，密码，确认密码。性别（单选），
+          兴趣爱好（多选），国籍（下 拉列表）。
+
+          隐藏域，自我评价（多行文本域）。重置，提交。
+-->
+<!--
+     form 标签就是表单
+     input type=text 是文件输入框
+     value 设置默认显示内容
+     input type=password 是密码输入框
+     value 设置默认显示内容
+     input type=radio 是单选框 name 属性可以对其进行分组 checked="checked"表示默认选中
+
+******重点**************************************************************************************
+  如果要正确地被提交，每个输入字段必须设置一个 name 属性。
+
+  <form action="http://localhost:8080/jd/login">
+			<table>
+				<tr>如果要正确地被提交，每个输入字段必须设置一个 name 属性。
+<td>用户名</td>
+<td><input type="text"/ name="username"></td>
+</tr>
+<tr>  如果要正确地被提交，每个输入字段必须设置一个 name 属性。
+    <td>密码</td>
+    <td><input type="password" name="userpwd"/></td>
+</tr>
+<tr align="center">
+    <td colspan="2">
+        <input type="submit" value="登陆" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="清空" />
+    </td>
+
+</tr>
+</table>
+</form>
+
+<a href="http://localhost:8080/oa/save?username=zhangsan&password=123">提交</a>
+  name属性非常重要。没有name属性无法被提交。
+  表单以什么格式提交给服务器的：？******非常重要，以后java写代码传服务器也是这样name=value&name=value&name=value.....
+  http://localhost:8080/jd/login?username=123&userpwd=1234556
+  格式：action?name=value&name=value&name=value&name=value&name=value
+		url?name=value&name=value&name=value...，
+		其中name是input标签的name属性，value是input标签的value属性
+	    name="username",value="123" & name="userpwd",value=1234556
+		username=123&userpwd=1234556
+
+	 W3C的HTTP协议规定的，必须以这种方式提交给服务器。
+    重点强调：表单项写了name属性的，一律会提交给服务器。不想提交这一项 ，就不要写name属性。
+所以只有name=value才被提交，没有name的字段不会被提交。
+
+****本框和密码框的value不需要开发人员指定，用户填写的数据就是value。
+
+当name没有写的时候，该项不会提交给服务器。
+但是当value没有写只写了name，value的默认值是空字符串"",会将空 字符串提交给
+服务器，java代码得到的是：String username = "";
+
+***********************************************************************************************
+     input type=checkbox 是复选框 checked="checked"表示默认选中
+     input type=reset 是重置按钮 value 属性修改按钮上的文本
+     input type=submit 是提交按钮 value 属性修改按钮上的文本
+     input type=button 是按钮 value 属性修改按钮上的文本
+     input type=file 是文件上传域
+     input type=hidden 是隐藏域。当我们要发送某些信息，而这些信息，不需要用户参与，
+                        就可以使用隐藏域（提交的 时候同时发送给服务器）
+     这是可以钓鱼的hidden，注意查看。
+
+     select 标签是下拉列表框
+     option 标签是下拉列表框中的选项
+     selected="selected"设置默认选中
+     textarea 表示多行文本输入框 （起始标签和结束标签中的内容是默认值）
+     rows 属性设置可以显示几行的高度
+     cols 属性设置每行可以显示几个字符宽度
+-->
+<!--form表单method属性：
+get：采用get方式提交的时候，用户提交的信息会显示在浏览器的地址栏上。
+post：采用post方式提交的时候，用户提交的信息不会显示在浏览器地址栏上 。
+当用户提交的信息中含有敏感信息，例如：密码，建议采用post方式提交。-->
+<form align="center" method="post">
+    <table align="center">
+        <tr>
+            <td>
+                用户名称：
+            <td/>
+            <td>
+                <input type="text" value="默认值"/><br/>
+            <td/>
+        <tr>
+            <td>
+                用户密码：
+            <td/>
+            <td>
+                <input type="text" value="默认值"/><br/>
+            <td/>
+
+    </table>
+
+    用户名称：<input type="text" value="默认值"/><br/>
+    用户密码：<input type="password" value="abc"/><br/>
+    确认密码：<input type="password" value="abc"/><br/>
+    性别：<input type="radio" name="sex" checked="checked"/>男<input type="radio" name="sex"/>女<br/>
+    <!-- 单选框 性别加一个属性name="sex"，让浏览器知道这是一个组，就不会出现可以选择男也可以选择女的双选 -->
+    兴趣爱好：<input type="checkbox" checked="checked"/>Java
+    <input type="checkbox"/>JavaScript
+    <input type="checkbox"/>python
+    <input type="checkbox"/>C++<br/>
+    国籍：<select>
+    <option>--请选择国籍--</option>
+    <option selected="selected">中国</option>
+    <option>美国</option>
+    <option>日本</option>
+    <option>韩国</option>
+</select><br/>
+    自我评价：<textarea rows="10" cols="30">默认值写在这里</textarea><br/>
+    <input type="reset" value="重置"/>
+    <input type="submit"/>
+    <input type="file"/> <!--这是文本上传 -->
+    <input type="hidden" name="abc"/>
+</form>
+
+</body>
+</html>

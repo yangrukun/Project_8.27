@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS函数初步2</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			   java中的方法有重载机制，JS中的函数能重载吗？
+			   
+			       JS当中的函数在调用的时候，参数的类型没有限制，并且参数的个数也没有限制，JS就是这么随意。（弱类型）
+				
+				重载的含义：
+				
+				   方法名或者函数名一样，形参不同（个数，类型，顺序）
+				   
+				答：由于JS是一种弱类型编程语言，所以函数不能同名，没有重载机制
+				
+				注意：在JS中，就靠函数名来区分不同的函数。所以函数名同名就会被后者覆盖。
+				
+				（3）JS中的函数定义在脚本块中，页面在打开的时候，函数并不会自动执行，
+				     函数是需要手动调用才能执行的。
+				（4）由于JS是一种弱类型编程语言，所以函数不能同名，没有重载机制
+				（5）这样的代码顺序是可以的，页面打开的时候会先进行所有函数的声明，
+				     函数声明优先级较高。
+			*/
+		   function sum(a,b){
+			   return a+b;
+		   }
+		   //调用函数sum，下面四种方式都可以调用函数sum()，传实参a和b就接受，不传就不接受。
+		   var retValue = sum(2 , 3);
+		   alert(retValue);
+		   
+		   var retValue2 = sum("jack");//jack赋值给了a变量，b变量没有赋值，系统默认赋值undefined
+		   alert(retValue2);//jackundefined  此时a+b中的 + 是连接符作用。
+		   
+		   var retValue3 = sum();
+		   alert(retValue3);//NaN , (NaN是一个具体存在的值，该值表示不是数字。Not a Number)
+		   
+		   var retValue4 = sum(1,2,3);// 1赋值给了a变量，2赋值给了b变量，3没有赋值，直接抛弃了。
+		   alert("结果="+retValue4);//结果=3
+		   
+		   
+		   function test1(username){
+			   alert("test1");
+		   }
+		   /*
+		     在JS当中，函数的名字不能重名，当函数重名的时候，后声明的函数会将前面声明的同名函数覆盖 。
+		   */
+		   function test1(){
+		   			   alert("test1test1");
+		   }
+		   
+		   test1("lisi");//test1test1  这里调用的是第二个test1函数，同名的第二个函数test1覆盖了第一个 。
+
+		</script>
+	</body>
+</html>

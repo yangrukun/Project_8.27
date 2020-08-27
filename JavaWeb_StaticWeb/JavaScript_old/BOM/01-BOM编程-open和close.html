@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>BOM编程-open和close</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			  1、JavaScript包括三大块 ：
+			  
+			      ECMAScript：JS的核心语法（ES规范/ECMA-262标准）
+				  
+				  DOM：Document Object Model（文档对象模型：对网页当中的节点进行增删改查过程。）HTML文档被当成一棵DOM树来看待。
+				        var domObj = document.getElementById("id");//重点句子核心语句
+						
+				  BOM: Browser Object Model（浏览器对象模型）
+				        关闭浏览器窗口、打开一个新的浏览器窗口、后退、前进、浏览器地址栏上的地址等，都是BOM编程 。
+						
+			  2、DOM和BOM之间的区别和联系？
+			    
+				 BOM的顶级对象是：window
+				 DOM的顶级对象是：document
+				 实际上BOM包含DOM的！
+				 
+				 window.document.getElementById("");//前面是有window.的。
+				 只不过window.可以省略/
+				 document.getElementById("");
+				 
+			*/
+		   
+		   /*
+		     1、BOM编程中，window对象是顶级对象，代表浏览器窗口。
+			 2、window有open和close方法，可以开启窗口和关闭窗口。
+			 
+		   */
+		   
+		</script>
+		<!-- 和以前的 target="_blank" 用法一样 -->
+		<!-- window.open('http://www.baidu.com','_self')可以传第二个参数，第二个参数是target属性值 -->
+		<input type="button"  value="开启百度(新窗口)" onclick="window.open('http://www.baidu.com')" />
+		<input type="button"  value="开启百度(当前窗口)" onclick="window.open('http://www.baidu.com','_self')" />
+		<input type="button"  value="开启百度(新窗口)" onclick="window.open('http://www.baidu.com','_blank')" />
+		<input type="button"  value="开启百度(父窗口)" onclick="window.open('http://www.baidu.com','_parent')" />
+		<input type="button"  value="开启百度(顶级窗口)" onclick="window.open('http://www.baidu.com','_top')" />
+		
+		<!--
+		 <input type="button"  value="打开表单验证" onclick="window.open('E:\java\JavaScript\DOM\05-DOM-表单验证.html')" />
+		 -->
+		 
+		 <input type="button"  value="关闭窗口" onclick="window.close();" />
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>复杂一点的JSON对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var user = {
+				"usercode":123,
+				"username":"张三",
+				"sex":true,
+				"address":{
+					"city":"北京",
+					"street":"大兴区",
+					"zipcode":"1233123"
+				},
+				"aihao":["smoke","drink","tt"]
+			};
+			
+			//访问任命以及居住的城市。                       
+			alert(user.username +"，"+user.address.city +"，"+user.aihao[0]);//访问数组时下标从0开始的。
+			
+			/*
+			请自行设计JSON格式的数据，这个JSON格式的数据可以描述整个班级中每一个学生的信息，以及总人数信息。
+			*/
+		   var student2 = {
+			   "total":3,
+			   "student":[
+				   {"name":"张三","birth":"1999-10-10"},
+				   {"name":"李四","birth":"1999-11-10"},
+				   {"name":"王五","birth":"1999-7-10"}
+				   ]
+		   };
+			//遍历数组
+			for (var i=0; i<student2.student.length ; i++) {
+				alert(student2.student[i].name + "," + student2.student[i].birth );
+			}
+			
+		</script>
+	</body>
+</html>

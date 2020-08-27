@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>eval函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		/* 		
+		eval()函数作用
+        将字符串当作一段JS代码解释并执行。
+		函数可计算某个字符串，并执行其中的的 JavaScript 代码。
+		
+		语法:
+		eval(string) 
+		*/
+		
+		eval("x=10;y=20;document.write(x*y)")
+		document.write("<br />")//换行
+		
+		document.write(eval("2+2"))
+		document.write("<br />")//换行
+		
+		var x=10
+		document.write(eval(x+17))
+		
+		//java连接数据库，查询数据之后，将数据在 java程序中拼接成JSON格式的“字符串”，将json格式的字符串响应到浏览器
+		//就是说java响应给浏览器的仅仅是 一个“JSON格式的字符串”，还不是一个JSON对象。
+		//可以使用eval函数，将JSON格式的字符串转化成json对象。
+		var fromJava ="{\"name\":\"zhangsan\",\"password\":\"123\"}";//这就是java程序发过来的json格式的“字符串”
+		//上面的句子用了“\”转义符，多个引号不能套在一起，不然第一个引号和最后一个引号配对。避免嵌套 。
+		
+		//将以上的json格式的字符串转换成json对象。
+		window.eval("var jsonObj ="+fromJava);//这里的eval("var jsonObj ="fromJava)会把括号里面的var jsonObj =解释出来
+		//变成var jsonObj = "{\"name\":\"zhangsan\",\"password\":\"123\"}";
+		
+		alert(fromJava);//{"name":"zhangsan","password":"123"}
+		alert(jsonObj);//[object Object]
+		
+		//访问json对象属性    这是在前端取数据用的方法。
+		alert(jsonObj.name+"，"+ jsonObj.password);//zhangsan，123
+		
+		
+		//就是说 json 和 eval()函数 一起用才能真正地完成前端的数据交换。
+		
+		/*
+		  面试题：
+		        在JS中的[]和{} 有什么区别？
+					  []  是数组
+					  {}  是json
+				
+				Java中的数组int[] arr = {1,2,5,6};
+				JS中的数组 var arr = [12,"abc",null,3.14]   //JS中数组元素的类型随意。元素的个数随意。
+				JSON    var jsonObj = {"email":"zhangsan@126.com","age":"25"};
+				
+				
+		*/
+	  /* 
+			      json是一种行业内的数据交换的格式标准。
+				  json在JS中以js对象的形式存在。
+	 */
+		
+		   var json = {
+			   "username":"zhangsan"
+		   }
+		   //JS中访问JSON对象的属性 （两种都要会）
+		   alert(json.username);
+		   alert(json["username"]);
+		   
+		   
+		</script>
+		
+	</body>
+</html>

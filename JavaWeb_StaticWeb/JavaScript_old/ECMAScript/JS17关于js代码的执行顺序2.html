@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>关于JS代码的执行顺序2</title>
+
+	</head>
+
+
+	<body>
+
+
+		<script type="text/javascript">
+			
+/* 			window.onload = ready;
+
+			function ready() {
+				document.getElementById("btn").onclick = function() {
+					alert("hello.....");
+				} */
+				
+				//把上面代码再简化： （以后都用下面这种方式）
+				
+				//页面加载的过程中，将a函数注册到了load事件，
+				//页面加载完毕之后，load事件发生了，此时执行回调函数a。
+				//回调函数a在执行的过程，把b函数注册到id="btn"的lick事件上，
+				//当id="btn"的节点发生了click事件之后，b函数被调用并执行。
+				window.onload = function(){//改成匿名函数 这个回调函数叫做a
+					document.getElementById("btn").onclick = function() {//这个回调函数叫做b
+						alert("hello22222.....");
+					}
+                     //这里有两个回调函数。
+			}
+		</script>
+		<input type="button" value="hello" id="btn" />
+
+
+	</body>
+</html>

@@ -1,0 +1,72 @@
+
+
+<script type="text/javascript">
+	document.write("first ")/*这个是直接文本形式写在页面上*/
+</script>
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>HTML中嵌入JS代码的第二种方式</title>
+		
+		<!--样式块-->
+		<style>
+			/*
+			 CSS代码
+			*/
+		</style>
+		
+	</head>
+	<body>
+		<!--第二种方式：脚本块的方式。-->
+		<script type="text/javascript">
+			/*
+			   暴露在脚本块当中的程序，在页面打开的时候执行，
+			   并且遵守自上而下的顺序依次执行。（这个代码执行
+			   不需要事件。）
+			   下例子中的 JavaScript 语句，会在页面加载时执行。
+			   通常，我们需要在某个事件发生时执行代码，比如当用户点击按钮时。
+			   如果我们把 JavaScript 代码放入函数中，就可以在事件发生时调用该函数。
+			   
+			   一个页面中可以写多个脚本块
+			   
+			   脚本块的位置没有限制，随意,可以任意位置，放在html之前、放在html外面也都可以。
+			   
+			   暴露在脚本块中的JS代码在页面打开的时候遵循自上而下的顺序依次逐行执行
+			*/
+			window.alert("Hello World!");
+			
+			//<script>标签里面的内容，会在页面加载时执行。
+			
+			/*
+			  这个alert("")是弹框，alert函数会阻塞 整个HTML页面的加载。
+			  （阻挡，直到用户点击确定按钮。）
+			*/
+			document.write("nihao ")/*这个是直接文本形式写在html页面上*/
+			
+			//JS代码单行注释
+			/*
+			   JS代码的多行注释，和java一样。
+			*/
+			
+		</script>
+		<br />
+		
+		<input type="button" value="你好我是一个按钮对象" />
+	     
+	</body>
+</html>
+
+<script type="text/javascript">
+	document.write("last ")/*这个是直接文本形式写在页面上*/
+</script>
+
+<!--/**
+ * 这里的信息会被提取生成帮助文档。
+ */-->
+
+<!--  javadoc注释，这里的注释信息会被javadoc.exe工具解析提取生成帮助文档。--> 
+

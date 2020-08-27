@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>设置table的tbody</title>
+		
+
+		</style>
+	</head>
+	
+	<body>
+		
+		<script type="text/javascript">
+			var fromjava = {
+				"total":"4",
+				"sdate":
+				[
+				{"sno":110,"sname":"张三","sal":"1800"},
+				{"sno":120,"sname":"李四","sal":"2800"},
+				{"sno":130,"sname":"王五","sal":"3800"},
+				{"sno":140,"sname":"赵六","sal":"4800"}
+				]
+			}
+			//把数据展示到table中。
+			window.onload = function(){
+				document.getElementById("btn").onclick = function(){
+					var date = fromjava.sdate;
+					var html = "";
+				  for(var i = 0; i<date.length;i++){
+					  html +="<tr>"
+					  html +="<td>"+date[i].sno+"</td>"//date[i].sno中间的变量 不能加双引号。
+					  html +="<td>"+date[i].sname+"</td>"
+					  html +="<td>"+date[i].sal+"</td>"
+					  html +="</tr>"
+				  }
+				  document.getElementById("displayBtn").innerHTML = html;//用inner可以解析 <tr>这些标签。
+				  document.getElementById("count").innerHTML = fromjava.total
+				}
+			}
+			
+			
+		</script>
+		
+	<input type="button" value="展示数据" id="btn" />
+	<table  border= "1px" width="60%">
+		<tr>
+			<th>员工编号</th>
+			<th>员工名字</th>
+			<th>员工薪资</th>
+		</tr>
+		<tbody id="displayBtn">
+			
+		</tbody>
+
+	</table>
+	总条数为：<span id="count">0</span>
+	
+	</body>
+</html>
